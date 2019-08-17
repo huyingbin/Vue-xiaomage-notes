@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mustache</title>
+    <style></style>
+</head>
+<body>
+<div id="app">
+    <!-- 对字符串进行拼接 -->
+    <div>{{message}}</div>
+    <!-- v-once 不会随变量变而变 -->
+    <div v-once>{{once}}</div>
+    <div>{{firstName+lastName}}</div>
+    <div>{{firstName+" "+lastName}}</div>
+
+    <!-- 对数值进行逻辑计算 -->
+    <div>{{number+1}}</div>
+    <div>{{number / 2}}</div>
+
+    <!-- 逻辑表达式 -->
+    <div>{{number > 2}}</div>
+    <div>{{flag ? "显示" : "隐藏"}}</div>
+
+    <!-- 方法 -->
+    <div>{{message.split('').reverse().join('')}}</div>
+
+    <!-- 注意：
+        Mustache内 支持所有的javaScript支持所有的表达式。
+    -->
+</div>
+<script src="../vue/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el:"#app",
+        data:{
+            message:"Mustache表达式",
+            firstName:"xiao",
+            lastName:"ming",
+            number:4,
+            number2:5,
+            flag:false,
+            once:"v-once指令"
+
+        }
+        
+    })
+</script>  
+</body>
+</html>
