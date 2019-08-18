@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- 说明 
+    通过 对象的形式绑定 class 属性的主要作用是可以 动态 的绑定class
+    -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .font{
+            font-size: 30px;
+        }
+
+        .background{
+            background-color: blue;
+        }
+
+        .color{
+            color:red;
+        }
+    
+    </style>
+</head>
+<body>
+<div id="app">
+
+<button @click="changeBackground">控制背景色</button>
+<div class="font" :class="{background:isBackground,color:isColor}">{{message}}</div>
+
+<!-- 如果绑定class太长时可以将对象放在方法中 -->
+<button @click="changeBackground">控制背景色</button>
+<div class="font" :class="getClass()">{{message}}</div>
+
+</div>
+<script src="../vue/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el:"#app",
+        data:{
+            message:"hello World",
+            isBackground:true,
+            isColor:true,
+        },
+        methods:{
+            changeBackground(){
+                this.isBackground = !this.isBackground;
+            },
+            getClass(){
+                return {background:this.isBackground,color:this.isColor};
+            }
+        }
+    })  
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- 点击当前行字体变颜色，其他行恢复正常 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+        }
+        .red{
+            color: red;
+        }
+    
+    </style>
+</head>
+<body>
+<div id="app">
+        <div class="person1">
+            <div v-for="(item,index) in lists"  @click="clickAdd(index)" :key="index" :class="{red:i === index}">
+                <div>{{item.name}}</div>
+            </div>
+        </div>
+</div>
+<script src="../vue/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el:"#app",
+        data :{
+            isShow: false,
+            i: null,
+            lists: [
+                {id: 1, name: '孙悟空'},
+                {id: 2, name: '猪八戒'},
+                {id: 3, name: '唐三藏'}
+            ]
+    
+        },
+        methods: {
+            clickAdd (index) {
+            console.log(index)
+            this.i = index
+            }
+        },
+    })  
+</script>
+</body>
+</html>
